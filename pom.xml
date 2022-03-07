@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.acme</groupId>
-  <artifactId>security-openid-connect-web-authentication-quickstart</artifactId>
+  <artifactId>security</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
     <htmlunit.version>2.37.0</htmlunit.version>

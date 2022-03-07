@@ -1,0 +1,7 @@
+{
+	"auths": {
+		"registry.fedoraproject.org": {
+			"auth": "dXNlcjE6b3BlbnNoaWZ0"
+		}
+	}
+}

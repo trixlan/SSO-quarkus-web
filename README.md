@@ -1,4 +1,76 @@
-# Authentication in Web Applications Using OpenID Connect
+# Quarkus App use SSO in OpenShift
+
+If you have a Quarkus App and wants to add Security whith SSO this is the right place
+
+We start deploying our app in local host for the first approauch 
+
+First, We need clone the repository with the next command
+
+```bash
+    git clone https://github.com/trixlan/SSO-quarkus-web.git
+
+    cd SSO-quarkus-web
+```
+
+Check in pom.xml file if there are **oidc** dependency
+
+```xml
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-oidc</artifactId>
+    </dependency>
+```
+
+You will add with the next comand
+
+```bash
+    ./mvnw quarkus:add-extension -Dextensions="oidc"
+```
+
+We need to add some properties in application.properties file which should be located at the **src/main/resources** directory
+
+```properties
+    quarkus.oidc.auth-server-url=https://keycloak-sso.apps.cluster-lzrtr.lzrtr.sandbox506.opentlc.com/auth/realms/demo
+    quarkus.oidc.client-id=js-console
+    quarkus.oidc.credentials.secret=0327ab34-46b3-485b-a8ed-c648dbfa7503
+
+    quarkus.keycloak.devservices.realm-path=quarkus-realm.json
+    quarkus.oidc.application-type=web-app
+    quarkus.http.auth.permission.authenticated.paths=/*
+    quarkus.http.auth.permission.authenticated.policy=authenticated
+    
+    quarkus.kubernetes-client.trust-certs=true
+    quarkus.openshift.route.expose=true
+```
+
+Now need to configure the SSO 
+![Users](./image/sso-login.png)
+
+Create new realm 
+![Users](./image/realm.png)
+
+Create new client
+![Users](./image/client-properties.png)
+
+![Users](./image/client-credential.png)
+
+![Users](./image/clients.png)
+
+Create new user
+![Users](./image/user-detail.png)
+
+![Users](./image/users.png)
+
+Create roles and add roles to users
+![Users](./image/roles.png)
+
+![Users](./image/user-roles.png)
+
+After we have the SSO running, it run the application in OpenShift
+
+```bash
+    
+```
 
 This is a minimal web application serving a single HTML file and a JAX-RS Resource to serve a HTML content.
 
